@@ -29,6 +29,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
+
+    "ai-resume-job-portal-backend.onrender.com",
 ]
 
 
