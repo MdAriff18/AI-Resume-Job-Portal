@@ -27,7 +27,7 @@ urlpatterns = [
         LoginAPIView.as_view(),
         name="login",
     ),
-
+    
     path(
         "logout/",
         LogoutAPIView.as_view(),
