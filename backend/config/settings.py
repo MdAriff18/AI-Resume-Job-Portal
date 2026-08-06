@@ -159,6 +159,14 @@ SIMPLE_JWT = {
 
 CORS_ALLOWED_ORIGINS = [
     "https://ai-resume-job-portal-xi.vercel.app",
+
+    "https://ai-resume-job-portal-git-main-ai-resume-job-portal.vercel.app",
+
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://ai-resume-job-portal-xi.vercel.app",
+    "https://ai-resume-job-portal-git-main-ai-resume-job-portal.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
