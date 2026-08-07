@@ -38,6 +38,10 @@ function Login() {
           AI Resume Job Portal
         </h1>
 
+        <p className="login-subtitle">
+          AI Powered Resume Analyzer & Job Matcher
+        </p>
+
         <h2>Login</h2>
 
         <form onSubmit={handleLogin}>

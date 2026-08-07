@@ -1,0 +1,206 @@
+.navbar {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 35px;
+
+  background: rgba(15, 23, 42, 0.75);
+
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+
+
+  border-radius: 0 0 24px 24px;
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+}
+
+
+
+/* Logo */
+
+.navbar-logo {
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+}
+
+
+
+.navbar-logo svg {
+
+  width:34px;
+  height:34px;
+
+  color:#7c3aed;
+
+  filter:
+  drop-shadow(0 0 10px rgba(124,58,237,0.4));
+
+}
+
+
+
+.navbar-logo h2 {
+
+  font-size:23px;
+
+  font-weight:700;
+
+  letter-spacing:-0.5px;
+
+  background:linear-gradient(
+    90deg,
+    #38bdf8,
+    #6366f1,
+    #8b5cf6
+  );
+
+  -webkit-background-clip:text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+
+}
+
+
+
+/* Actions */
+
+.navbar-actions {
+
+  display:flex;
+
+  align-items:center;
+
+  gap:18px;
+
+}
+
+
+
+/* Logout */
+
+.logout-btn {
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+
+  padding:11px 20px;
+
+
+  border:none;
+
+  border-radius:30px;
+
+
+  background:
+  linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+  );
+
+
+  color:white;
+
+
+  font-weight:600;
+
+  cursor:pointer;
+
+
+  transition:all 0.3s ease;
+
+}
+
+
+
+.logout-btn:hover {
+
+  transform:
+  translateY(-3px)
+  scale(1.03);
+
+
+  box-shadow:
+  0 12px 25px rgba(0,0,0,0.25);
+
+}
+
+.logout-btn:active{
+  transform: scale(.96);
+}
+
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+
+ .navbar{
+
+  padding:15px 18px;
+
+ }
+
+
+
+ .navbar-logo h2{
+
+  font-size:17px;
+
+ }
+
+
+
+ .logout-btn{
+
+  padding:9px 14px;
+
+ }
+
+.theme-btn{
+
+    width:46px;
+    height:46px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+    transition:.3s;
+}
+
+.theme-btn:hover{
+
+    transform:rotate(180deg);
+
+    background:#2563eb;
+}
+
+}

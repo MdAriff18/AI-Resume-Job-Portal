@@ -160,6 +160,8 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "https://ai-resume-job-portal-xi.vercel.app",
 
+    "http://localhost:5173",
+
     "https://ai-resume-job-portal-git-main-ai-resume-job-portal.vercel.app",
 
 ]
