@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -12,32 +12,32 @@ import ResumeBuilder from "./pages/ResumeBuilder";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-function AppContent() {
-  const location = useLocation();
-
-  const hideNavbar =
-    location.pathname === "/login" ||
-    location.pathname === "/register";
+function App() {
 
   return (
-    <>
-      {!hideNavbar && <Navbar />}
+    <BrowserRouter>
+
+      <Navbar />
 
       <Routes>
+
         <Route
           path="/"
           element={<Navigate to="/login" replace />}
         />
+
 
         <Route
           path="/login"
           element={<Login />}
         />
 
+
         <Route
           path="/register"
           element={<Register />}
         />
+
 
         <Route
           path="/dashboard"
@@ -48,6 +48,7 @@ function AppContent() {
           }
         />
 
+
         <Route
           path="/profile"
           element={
@@ -57,6 +58,7 @@ function AppContent() {
           }
         />
 
+
         <Route
           path="/resume/upload"
           element={
@@ -65,6 +67,7 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
+
 
         <Route
           path="/my-resumes"
@@ -92,17 +95,13 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
-      </Routes>
-    </>
-  );
-}
 
-function App() {
-  return (
-    <BrowserRouter>
-      <AppContent />
+
+      </Routes>
+
     </BrowserRouter>
   );
 }
+
 
 export default App;

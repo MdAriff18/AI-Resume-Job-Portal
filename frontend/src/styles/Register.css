@@ -1,12 +1,12 @@
 /* =========================
-   Login Page
+   Register Page
 ========================= */
 
 * {
   box-sizing: border-box;
 }
 
-.login-container {
+.register-container {
   position: relative;
 
   min-height: 100vh;
@@ -38,32 +38,30 @@
    Background Orbs
 ========================= */
 
-.background-orb {
+.register-orb {
   position: absolute;
 
   border-radius: 50%;
 
-  filter: blur(2px);
-
   pointer-events: none;
 }
 
-.orb-one {
-  width: 300px;
-  height: 300px;
+.register-orb-one {
+  width: 320px;
+  height: 320px;
 
-  top: -100px;
-  left: -80px;
+  top: -120px;
+  left: -90px;
 
   background: rgba(99, 102, 241, 0.12);
 }
 
-.orb-two {
-  width: 350px;
-  height: 350px;
+.register-orb-two {
+  width: 360px;
+  height: 360px;
 
-  right: -120px;
-  bottom: -120px;
+  right: -130px;
+  bottom: -130px;
 
   background: rgba(139, 92, 246, 0.12);
 }
@@ -73,7 +71,7 @@
    Main Layout
 ========================= */
 
-.login-layout {
+.register-layout {
   position: relative;
   z-index: 2;
 
@@ -93,11 +91,11 @@
    Branding
 ========================= */
 
-.login-brand {
+.register-brand {
   max-width: 550px;
 }
 
-.brand-icon {
+.register-brand-icon {
   width: 58px;
   height: 58px;
 
@@ -122,7 +120,7 @@
     0 15px 30px rgba(99, 102, 241, 0.25);
 }
 
-.brand-label {
+.register-label {
   font-size: 11px;
 
   font-weight: 800;
@@ -132,7 +130,7 @@
   color: #6366f1;
 }
 
-.login-brand h1 {
+.register-brand h1 {
   margin: 14px 0 20px;
 
   font-size: clamp(42px, 5vw, 62px);
@@ -144,7 +142,7 @@
   color: #0f172a;
 }
 
-.login-brand h1 span {
+.register-brand h1 span {
   background:
     linear-gradient(
       90deg,
@@ -158,7 +156,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-.login-brand > p {
+.register-brand > p {
   max-width: 500px;
 
   margin: 0;
@@ -171,9 +169,11 @@
 }
 
 
-/* Features */
+/* =========================
+   Features
+========================= */
 
-.brand-features {
+.register-features {
   display: flex;
 
   flex-direction: column;
@@ -183,7 +183,7 @@
   margin-top: 30px;
 }
 
-.brand-features div {
+.register-features div {
   display: flex;
 
   align-items: center;
@@ -197,7 +197,7 @@
   font-weight: 600;
 }
 
-.brand-features span {
+.register-features span {
   width: 23px;
   height: 23px;
 
@@ -216,10 +216,10 @@
 
 
 /* =========================
-   Login Card
+   Register Card
 ========================= */
 
-.login-box {
+.register-box {
   width: 100%;
 
   padding: 38px;
@@ -233,20 +233,21 @@
   box-shadow:
     0 25px 70px rgba(15, 23, 42, 0.1);
 
+
   -webkit-backdrop-filter: blur(20px);
 
-    backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
 
 }
 
 
 /* Header */
 
-.login-card-header {
-  margin-bottom: 30px;
+.register-header {
+  margin-bottom: 28px;
 }
 
-.login-card-header h2 {
+.register-header h2 {
   margin: 0;
 
   color: #0f172a;
@@ -256,18 +257,20 @@
   letter-spacing: -0.7px;
 }
 
-.login-card-header p {
+.register-header p {
   margin-top: 8px;
 
   color: #64748b;
 
   font-size: 14px;
+
+  line-height: 1.5;
 }
 
 
-/* Mobile brand icon */
+/* Mobile Icon */
 
-.mobile-brand-icon {
+.register-mobile-icon {
   display: none;
 }
 
@@ -276,11 +279,11 @@
    Inputs
 ========================= */
 
-.input-group {
-  margin-bottom: 20px;
+.register-input-group {
+  margin-bottom: 18px;
 }
 
-.input-group label {
+.register-input-group label {
   display: block;
 
   margin-bottom: 8px;
@@ -292,16 +295,16 @@
   font-weight: 700;
 }
 
-.input-wrapper {
+.register-input-wrapper {
   display: flex;
 
   align-items: center;
 
   gap: 11px;
 
-  padding: 0 14px;
-
   height: 50px;
+
+  padding: 0 14px;
 
   border: 1px solid #e2e8f0;
 
@@ -315,13 +318,13 @@
     background 0.25s ease;
 }
 
-.input-wrapper svg {
+.register-input-wrapper svg {
   color: #94a3b8;
 
   flex-shrink: 0;
 }
 
-.input-wrapper:focus-within {
+.register-input-wrapper:focus-within {
   background: white;
 
   border-color: #6366f1;
@@ -330,10 +333,11 @@
     0 0 0 4px rgba(99, 102, 241, 0.1);
 }
 
-.input-wrapper input {
+.register-input-wrapper input {
   width: 100%;
 
   border: none;
+
   outline: none;
 
   background: transparent;
@@ -343,16 +347,16 @@
   font-size: 14px;
 }
 
-.input-wrapper input::placeholder {
+.register-input-wrapper input::placeholder {
   color: #94a3b8;
 }
 
 
 /* =========================
-   Login Button
+   Register Button
 ========================= */
 
-.login-button {
+.register-button {
   width: 100%;
 
   height: 52px;
@@ -393,23 +397,23 @@
     box-shadow 0.25s ease;
 }
 
-.login-button:hover {
+.register-button:hover {
   transform: translateY(-2px);
 
   box-shadow:
     0 15px 30px rgba(99, 102, 241, 0.32);
 }
 
-.login-button:active {
+.register-button:active {
   transform: scale(0.98);
 }
 
 
 /* =========================
-   Register
+   Login Link
 ========================= */
 
-.register-section {
+.login-link-section {
   display: flex;
 
   align-items: center;
@@ -417,14 +421,14 @@
 
   gap: 5px;
 
-  margin-top: 24px;
+  margin-top: 23px;
 
   font-size: 13px;
 
   color: #64748b;
 }
 
-.register-section button {
+.login-link-section button {
   padding: 0;
 
   border: none;
@@ -440,7 +444,7 @@
   cursor: pointer;
 }
 
-.register-section button:hover {
+.login-link-section button:hover {
   text-decoration: underline;
 }
 
@@ -449,8 +453,8 @@
    Footer
 ========================= */
 
-.login-footer {
-  margin-top: 25px;
+.register-footer {
+  margin-top: 24px;
 
   padding-top: 18px;
 
@@ -460,7 +464,9 @@
 
   color: #94a3b8;
 
-  font-size: 11px;
+  font-size: 10px;
+
+  line-height: 1.5;
 }
 
 
@@ -470,11 +476,11 @@
 
 @media (max-width: 900px) {
 
-  .login-container {
+  .register-container {
     padding: 25px;
   }
 
-  .login-layout {
+  .register-layout {
     grid-template-columns: 1fr;
 
     max-width: 500px;
@@ -482,30 +488,29 @@
     gap: 35px;
   }
 
-  .login-brand {
+  .register-brand {
     text-align: center;
 
     max-width: none;
   }
 
-  .brand-icon {
+  .register-brand-icon {
     margin-left: auto;
     margin-right: auto;
   }
 
-  .login-brand h1 {
+  .register-brand h1 {
     font-size: 42px;
   }
 
-  .login-brand > p {
+  .register-brand > p {
     margin-left: auto;
     margin-right: auto;
   }
 
-  .brand-features {
+  .register-features {
     align-items: center;
   }
-
 }
 
 
@@ -515,25 +520,25 @@
 
 @media (max-width: 600px) {
 
-  .login-container {
+  .register-container {
     padding: 18px;
   }
 
-  .login-layout {
+  .register-layout {
     gap: 22px;
   }
 
-  .login-brand {
+  .register-brand {
     display: none;
   }
 
-  .login-box {
+  .register-box {
     padding: 28px 22px;
 
     border-radius: 21px;
   }
 
-  .mobile-brand-icon {
+  .register-mobile-icon {
     width: 46px;
     height: 46px;
 
@@ -555,8 +560,7 @@
     color: white;
   }
 
-  .login-card-header h2 {
+  .register-header h2 {
     font-size: 25px;
   }
-
 }

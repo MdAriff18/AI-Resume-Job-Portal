@@ -7,90 +7,141 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
 
-      <div className="hero-section">
-
+      {/* Header */}
+      <div className="dashboard-header">
         <div>
-          <h1>👋 Welcome Back</h1>
+          <span className="dashboard-label">OVERVIEW</span>
+
+          <h2>AI Resume Dashboard</h2>
 
           <p>
-            Analyze your resume, improve your ATS score and
-            discover your dream job with AI.
+            Welcome back! Here’s a quick overview of your resume performance.
           </p>
+        </div>
+
+        <div className="dashboard-status">
+          <span className="status-dot"></span>
+          System Active
+        </div>
+      </div>
+
+
+      {/* Stats Cards */}
+      <div className="dashboard-cards">
+
+        {/* Total Resumes */}
+        <div className="card stat-card">
+          <div className="card-icon resume-icon">
+            📄
+          </div>
+
+          <div className="stat-content">
+            <span>Total Resumes</span>
+            <strong>3</strong>
+            <small>Uploaded resumes</small>
+          </div>
+        </div>
+
+
+        {/* ATS Score */}
+        <div className="card ats-card">
+          <div className="card-heading">
+            <div>
+              <span>ATS SCORE</span>
+              <h3>Resume Strength</h3>
+            </div>
+
+            <div className="mini-icon">✦</div>
+          </div>
+
+          <div className="progress-wrapper">
+            <div className="progress-circle">
+              <CircularProgressbar
+                value={85}
+                text={`${85}%`}
+              />
+            </div>
+
+            <div className="score-info">
+              <strong>Excellent</strong>
+              <p>Your resume is highly optimized for ATS systems.</p>
+            </div>
+          </div>
+        </div>
+
+
+        {/* Skills Found */}
+        <div className="card skills-card">
+          <div className="card-heading">
+            <div>
+              <span>SKILLS</span>
+              <h3>Skills Found</h3>
+            </div>
+
+            <div className="mini-icon">✓</div>
+          </div>
+
+          <div className="badges">
+            <span className="skill-badge">Python</span>
+            <span className="skill-badge">React</span>
+            <span className="skill-badge">Django</span>
+            <span className="skill-badge">SQL</span>
+          </div>
+        </div>
+
+
+        {/* Missing Skills */}
+        <div className="card missing-card">
+          <div className="card-heading">
+            <div>
+              <span>IMPROVEMENT</span>
+              <h3>Missing Skills</h3>
+            </div>
+
+            <div className="mini-icon warning-icon">!</div>
+          </div>
+
+          <div className="badges">
+            <span className="missing-badge">Docker</span>
+            <span className="missing-badge">AWS</span>
+            <span className="missing-badge">Kubernetes</span>
+            <span className="missing-badge">GitHub Actions</span>
+          </div>
+        </div>
+
+
+        {/* Jobs Matched */}
+        <div className="card stat-card">
+          <div className="card-icon job-icon">
+            💼
+          </div>
+
+          <div className="stat-content">
+            <span>Jobs Matched</span>
+            <strong>5</strong>
+            <small>Potential opportunities</small>
+          </div>
         </div>
 
       </div>
 
-      <div className="dashboard-cards">
 
-        <div className="card">
+      {/* Bottom Section */}
+      <div className="dashboard-bottom">
 
-          <h3>📄 Total Resumes</h3>
+        <div className="insight-card">
+          <div className="insight-icon">✦</div>
 
-          <p>3</p>
+          <div>
+            <span>AI INSIGHT</span>
 
-        </div>
+            <h3>Your resume is performing well!</h3>
 
-
-        <div className="card ats-card">
-
-          <h3>🎯 ATS Score</h3>
-
-          <div className="progress-circle">
-
-            <CircularProgressbar
-              value={85}
-              text="85%"
-            />
-
+            <p>
+              Your ATS score is strong. Adding skills like Docker and AWS
+              could further improve your job matching results.
+            </p>
           </div>
-
-        </div>
-
-
-        <div className="card skills-card">
-
-          <h3>🧠 Skills Found</h3>
-
-          <div className="badges">
-
-            <span className="skill-badge">Python</span>
-
-            <span className="skill-badge">React</span>
-
-            <span className="skill-badge">Django</span>
-
-            <span className="skill-badge">SQL</span>
-
-          </div>
-
-        </div>
-
-
-        <div className="card missing-card">
-
-          <h3>⚠ Missing Skills</h3>
-
-          <div className="badges">
-
-            <span className="missing-badge">Docker</span>
-
-            <span className="missing-badge">AWS</span>
-
-            <span className="missing-badge">Kubernetes</span>
-
-            <span className="missing-badge">GitHub Actions</span>
-
-          </div>
-
-        </div>
-
-
-        <div className="card">
-
-          <h3>💼 Jobs Matched</h3>
-
-          <p>5</p>
-
         </div>
 
       </div>

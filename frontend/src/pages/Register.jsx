@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { User, Mail, Lock, ArrowRight, Sparkles } from "lucide-react";
 import API from "../api/axios";
+import "../styles/Register.css";
 
 function Register() {
   const [name, setName] = useState("");
@@ -44,42 +46,182 @@ function Register() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
-        <h1 className="login-title">AI Resume Job Portal</h1>
+    <div className="register-container">
 
-        <h2>Register</h2>
+      {/* Background */}
+      <div className="register-orb register-orb-one"></div>
+      <div className="register-orb register-orb-two"></div>
 
-        <form onSubmit={handleRegister}>
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
 
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+      <div className="register-layout">
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+        {/* Left Branding */}
+        <div className="register-brand">
 
-          <button type="submit">
-            Register
-          </button>
-        </form>
+          <div className="register-brand-icon">
+            <Sparkles size={30} />
+          </div>
+
+          <span className="register-label">
+            START YOUR CAREER JOURNEY
+          </span>
+
+          <h1>
+            Create your
+            <br />
+            <span>career profile.</span>
+          </h1>
+
+          <p>
+            Join the AI Resume Job Portal and make your
+            resume stronger, smarter and more job-ready.
+          </p>
+
+          <div className="register-features">
+
+            <div>
+              <span>✓</span>
+              Build professional resumes
+            </div>
+
+            <div>
+              <span>✓</span>
+              Improve your ATS score
+            </div>
+
+            <div>
+              <span>✓</span>
+              Match with relevant jobs
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* Register Card */}
+        <div className="register-box">
+
+          <div className="register-header">
+
+            <div className="register-mobile-icon">
+              <Sparkles size={22} />
+            </div>
+
+            <h2>Create account</h2>
+
+            <p>
+              Get started with your AI-powered career assistant.
+            </p>
+
+          </div>
+
+
+          <form onSubmit={handleRegister}>
+
+            {/* Name */}
+            <div className="register-input-group">
+
+              <label>Full Name</label>
+
+              <div className="register-input-wrapper">
+
+                <User size={18} />
+
+                <input
+                  type="text"
+                  placeholder="Enter your full name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+
+              </div>
+
+            </div>
+
+
+            {/* Email */}
+            <div className="register-input-group">
+
+              <label>Email Address</label>
+
+              <div className="register-input-wrapper">
+
+                <Mail size={18} />
+
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+
+              </div>
+
+            </div>
+
+
+            {/* Password */}
+            <div className="register-input-group">
+
+              <label>Password</label>
+
+              <div className="register-input-wrapper">
+
+                <Lock size={18} />
+
+                <input
+                  type="password"
+                  placeholder="Create a password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+
+              </div>
+
+            </div>
+
+
+            {/* Register Button */}
+            <button
+              type="submit"
+              className="register-button"
+            >
+              <span>Create account</span>
+              <ArrowRight size={18} />
+            </button>
+
+          </form>
+
+
+          {/* Login Link */}
+          <div className="login-link-section">
+
+            <span>
+              Already have an account?
+            </span>
+
+            <button
+              type="button"
+              onClick={() => navigate("/login")}
+            >
+              Sign in
+            </button>
+
+          </div>
+
+
+          <div className="register-footer">
+            Your account is protected with secure JWT authentication
+          </div>
+
+        </div>
+
       </div>
+
     </div>
   );
 }

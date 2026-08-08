@@ -1,63 +1,93 @@
 import { useEffect, useState } from "react";
 import API from "../api/axios";
+import "../styles/Profile.css";
 
 function Profile() {
-
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-
     const getProfile = async () => {
-
       try {
-
         const response = await API.get("profile/");
-
         setProfile(response.data);
-
       } catch (error) {
-
         console.log(error);
-
       }
-
     };
 
     getProfile();
-
   }, []);
 
-
   return (
-    <div>
+    <div className="profile-page">
 
-      <h1>AI Resume Job Portal</h1>
+      <div className="profile-header">
+        <div className="profile-icon">
+          👤
+        </div>
 
-      <h2>Profile</h2>
+        <div>
+          <h1>My Profile</h1>
+          <p>Manage your account information</p>
+        </div>
+      </div>
 
-      {
-        profile && (
-          <div>
+      {profile && (
+        <div className="profile-card">
 
-            <p>
-              Username: {profile.username}
-            </p>
+          <div className="profile-card-top">
+            <div className="avatar">
+              {profile.username?.charAt(0).toUpperCase()}
+            </div>
 
-            <p>
-              Email: {profile.email}
-            </p>
+            <div>
+              <h2>{profile.username}</h2>
+              <span className="role-badge">
+                {profile.role}
+              </span>
+            </div>
+          </div>
 
-            <p>
-              Phone: {profile.phone}
-            </p>
+          <div className="profile-divider"></div>
 
-            <p>
-              Role: {profile.role}
-            </p>
+          <div className="profile-info">
+
+            <div className="info-item">
+              <span className="info-icon">👤</span>
+              <div>
+                <small>Username</small>
+                <strong>{profile.username}</strong>
+              </div>
+            </div>
+
+            <div className="info-item">
+              <span className="info-icon">✉️</span>
+              <div>
+                <small>Email Address</small>
+                <strong>{profile.email}</strong>
+              </div>
+            </div>
+
+            <div className="info-item">
+              <span className="info-icon">📱</span>
+              <div>
+                <small>Phone Number</small>
+                <strong>{profile.phone || "Not provided"}</strong>
+              </div>
+            </div>
+
+            <div className="info-item">
+              <span className="info-icon">🛡️</span>
+              <div>
+                <small>Account Role</small>
+                <strong>{profile.role}</strong>
+              </div>
+            </div>
 
           </div>
-        )
-      }
+
+        </div>
+      )}
 
     </div>
   );
