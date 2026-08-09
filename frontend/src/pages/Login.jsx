@@ -9,9 +9,12 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    setLoading(true);
 
     try {
       const response = await API.post("login/", {
@@ -29,6 +32,8 @@ function Login() {
     } catch (error) {
       console.error(error);
       alert("Invalid email or password");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -152,9 +157,19 @@ function Login() {
             <button
               type="submit"
               className="login-button"
+              disabled={loading}
             >
-              <span>Sign in</span>
-              <ArrowRight size={18} />
+              {loading ? (
+                <>
+                  <span className="login-spinner"></span>
+                  <span>Logging in...</span>
+                </>
+              ) : (
+                <>              
+                  <span>Sign in</span>
+                  <ArrowRight size={18} />
+                </>
+              )}
             </button>
 
           </form>

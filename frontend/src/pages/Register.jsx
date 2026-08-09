@@ -8,11 +8,13 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await API.post("register/", {
@@ -42,6 +44,8 @@ function Register() {
           2
         )
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -189,9 +193,19 @@ function Register() {
             <button
               type="submit"
               className="register-button"
+              disabled={loading}
             >
-              <span>Create account</span>
-              <ArrowRight size={18} />
+              {loading ? (
+                <>
+                  <span className="register-spinner"></span>
+                  <span>Creating account...</span>
+                </>
+              ) : (
+                <>
+                  <span>Create account</span>
+                  <ArrowRight size={18} />
+                </>
+              )}
             </button>
 
           </form>
