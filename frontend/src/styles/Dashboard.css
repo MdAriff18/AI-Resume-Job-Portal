@@ -385,3 +385,193 @@
   }
 
 }
+
+/* =========================================
+   DARK MODE - DASHBOARD
+========================================= */
+
+html.dark-mode .dashboard-container {
+  background:
+    radial-gradient(
+      circle at 85% 5%,
+      rgba(99, 102, 241, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(14, 165, 233, 0.10),
+      transparent 30%
+    ),
+    #0f172a !important;
+
+  color: #f8fafc;
+}
+
+
+/* Header */
+
+html.dark-mode .dashboard-container .dashboard-header h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .dashboard-container .dashboard-header p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .dashboard-container .dashboard-label {
+  color: #a5b4fc !important;
+}
+
+
+/* Status */
+
+html.dark-mode .dashboard-container .dashboard-status {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Cards */
+
+html.dark-mode .dashboard-container .card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+
+  color: #f8fafc;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+html.dark-mode .dashboard-container .card:hover {
+  background: #243247 !important;
+  border-color: #6366f1 !important;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Stat Cards */
+
+html.dark-mode .dashboard-container .stat-content span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .dashboard-container .stat-content strong {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .dashboard-container .stat-content small {
+  color: #64748b !important;
+}
+
+
+/* Icons */
+
+html.dark-mode .dashboard-container .card-icon {
+  background: #312e81 !important;
+  color: #a5b4fc !important;
+}
+
+html.dark-mode .dashboard-container .resume-icon {
+  background: #312e81 !important;
+}
+
+html.dark-mode .dashboard-container .job-icon {
+  background: #164e63 !important;
+}
+
+
+/* Card Heading */
+
+html.dark-mode .dashboard-container .card-heading span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .dashboard-container .card-heading h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .dashboard-container .mini-icon {
+  background: #312e81 !important;
+  color: #a5b4fc !important;
+}
+
+html.dark-mode .dashboard-container .warning-icon {
+  background: #431407 !important;
+  color: #fdba74 !important;
+}
+
+
+/* ATS */
+
+html.dark-mode .dashboard-container .progress-circle .CircularProgressbar-path {
+  stroke: #818cf8;
+}
+
+html.dark-mode .dashboard-container .progress-circle .CircularProgressbar-trail {
+  stroke: #334155;
+}
+
+html.dark-mode .dashboard-container .progress-circle .CircularProgressbar-text {
+  fill: #f8fafc;
+}
+
+html.dark-mode .dashboard-container .score-info strong {
+  color: #4ade80 !important;
+}
+
+html.dark-mode .dashboard-container .score-info p {
+  color: #94a3b8 !important;
+}
+
+
+/* Skill Badges */
+
+html.dark-mode .dashboard-container .skill-badge {
+  background: #064e3b !important;
+  color: #6ee7b7 !important;
+  border-color: #065f46 !important;
+}
+
+html.dark-mode .dashboard-container .missing-badge {
+  background: #4c0519 !important;
+  color: #fda4af !important;
+  border-color: #881337 !important;
+}
+
+
+/* Insight */
+
+html.dark-mode .dashboard-container .insight-card {
+  background:
+    linear-gradient(
+      135deg,
+      #312e81,
+      #1e293b
+    ) !important;
+
+  border-color: #4338ca !important;
+}
+
+html.dark-mode .dashboard-container .insight-card span {
+  color: #c4b5fd !important;
+}
+
+html.dark-mode .dashboard-container .insight-card h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .dashboard-container .insight-card p {
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .dashboard-container .insight-icon {
+  background: #6366f1 !important;
+  color: white !important;
+}

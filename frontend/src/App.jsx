@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -12,33 +18,45 @@ import ResumeBuilder from "./pages/ResumeBuilder";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-function App() {
+
+function AppContent() {
+
+  const location = useLocation();
+
+  // Navbar should NOT appear on Login/Register pages
+  const hideNavbar =
+    location.pathname === "/login" ||
+    location.pathname === "/register";
+
 
   return (
-    <BrowserRouter>
-
-      <Navbar />
+    <>
+      {!hideNavbar && <Navbar />}
 
       <Routes>
 
+        {/* Default */}
         <Route
           path="/"
           element={<Navigate to="/login" replace />}
         />
 
 
+        {/* Login */}
         <Route
           path="/login"
           element={<Login />}
         />
 
 
+        {/* Register */}
         <Route
           path="/register"
           element={<Register />}
         />
 
 
+        {/* Dashboard */}
         <Route
           path="/dashboard"
           element={
@@ -49,6 +67,7 @@ function App() {
         />
 
 
+        {/* Profile */}
         <Route
           path="/profile"
           element={
@@ -59,6 +78,7 @@ function App() {
         />
 
 
+        {/* Resume Upload */}
         <Route
           path="/resume/upload"
           element={
@@ -69,6 +89,7 @@ function App() {
         />
 
 
+        {/* My Resumes */}
         <Route
           path="/my-resumes"
           element={
@@ -78,6 +99,8 @@ function App() {
           }
         />
 
+
+        {/* Job Match */}
         <Route
           path="/job-match"
           element={
@@ -87,6 +110,8 @@ function App() {
           }
         />
 
+
+        {/* Resume Builder */}
         <Route
           path="/resume-builder"
           element={
@@ -96,9 +121,17 @@ function App() {
           }
         />
 
-
       </Routes>
+    </>
+  );
+}
 
+
+function App() {
+
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }

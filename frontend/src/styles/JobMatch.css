@@ -81,6 +81,12 @@
   font-size: 32px;
 
   letter-spacing: -1px;
+
+  color: #0f172a;
+
+  font-weight: 700;
+
+  opacity: 1;
 }
 
 .jobmatch-header p {
@@ -89,6 +95,8 @@
   color: #64748b;
 
   font-size: 14px;
+
+  opacity: 1;
 }
 
 
@@ -707,4 +715,281 @@
     height: 88px;
   }
 
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  height: 42px;
+  padding: 0 15px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: #334155;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 18px rgba(15, 23, 42, 0.10);
+}
+
+
+/* Icon */
+
+.theme-icon {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #eef2ff;
+  color: #4f46e5;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.4s ease;
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: rotate(15deg);
+}
+
+
+/* Dark Mode Button */
+
+.theme-toggle.dark {
+  background: #1e293b;
+  color: #f8fafc;
+
+  border-color: #334155;
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+.theme-toggle.dark .theme-icon {
+  background: #334155;
+  color: #fbbf24;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    width: 42px;
+    padding: 0;
+
+    justify-content: center;
+  }
+
+  .theme-text {
+    display: none;
+  }
+}
+
+/* =========================
+   DARK MODE - JOB MATCH
+========================= */
+
+html.dark-mode .jobmatch-page {
+  background:
+    radial-gradient(
+      circle at 85% 5%,
+      rgba(99, 102, 241, 0.16),
+      transparent 30%
+    ),
+    #0f172a;
+
+  color: #f8fafc;
+}
+
+html.dark-mode .jobmatch-header h1 {
+  color: #f8fafc;
+}
+
+html.dark-mode .jobmatch-header p {
+  color: #94a3b8;
+}
+
+
+/* Main Card */
+
+html.dark-mode .match-card {
+  background: rgba(30, 41, 59, 0.92);
+  border-color: #334155;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Section headings */
+
+html.dark-mode .section-heading h3 {
+  color: #f1f5f9;
+}
+
+html.dark-mode .section-heading p {
+  color: #94a3b8;
+}
+
+html.dark-mode .section-icon {
+  background: #312e81;
+  color: #a5b4fc;
+}
+
+
+/* Select */
+
+html.dark-mode .resume-select {
+  background: #1e293b;
+  color: #f8fafc;
+  border-color: #475569;
+}
+
+html.dark-mode .resume-select:focus {
+  border-color: #818cf8;
+
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.18);
+}
+
+
+/* Job Description */
+
+html.dark-mode .job-description {
+  background: #1e293b;
+  color: #f8fafc;
+  border-color: #475569;
+}
+
+html.dark-mode .job-description::placeholder {
+  color: #64748b;
+}
+
+html.dark-mode .job-description:focus {
+  border-color: #818cf8;
+
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.18);
+}
+
+html.dark-mode .character-count {
+  color: #64748b;
+}
+
+
+/* Results Heading */
+
+html.dark-mode .results-heading h2 {
+  color: #f8fafc;
+}
+
+
+/* Score Card */
+
+html.dark-mode .score-card {
+  background:
+    linear-gradient(
+      135deg,
+      #1e1b4b,
+      #312e81
+    );
+
+  border-color: #4338ca;
+}
+
+html.dark-mode .score-circle > div {
+  background: #0f172a;
+}
+
+html.dark-mode .score-circle strong {
+  color: #a5b4fc;
+}
+
+html.dark-mode .score-circle span {
+  color: #94a3b8;
+}
+
+html.dark-mode .score-info h3 {
+  color: #f8fafc;
+}
+
+html.dark-mode .score-info p {
+  color: #94a3b8;
+}
+
+
+/* Result Cards */
+
+html.dark-mode .result-card,
+html.dark-mode .suggestions-card {
+  background: #1e293b;
+  border-color: #334155;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+html.dark-mode .result-card-header h3 {
+  color: #f8fafc;
+}
+
+html.dark-mode .result-card-header span {
+  color: #94a3b8;
+}
+
+
+/* Skills */
+
+html.dark-mode .matched-skill {
+  background: rgba(22, 163, 74, 0.15);
+  color: #86efac;
+  border-color: #166534;
+}
+
+html.dark-mode .missing-skill {
+  background: rgba(220, 38, 38, 0.15);
+  color: #fda4af;
+  border-color: #9f1239;
+}
+
+html.dark-mode .empty-result {
+  color: #64748b;
+}
+
+
+/* Suggestions */
+
+html.dark-mode .suggestion-item {
+  background: rgba(245, 158, 11, 0.10);
+  border-color: #92400e;
+}
+
+html.dark-mode .suggestion-item p {
+  color: #fcd34d;
 }

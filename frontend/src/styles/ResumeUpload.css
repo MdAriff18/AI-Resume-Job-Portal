@@ -86,6 +86,12 @@
   font-size: 32px;
 
   letter-spacing: -1px;
+
+  color: #0f172a;
+
+  font-weight: 700;
+
+  opacity: 1;
 }
 
 .upload-header p {
@@ -94,6 +100,8 @@
   color: #64748b;
 
   font-size: 14px;
+
+  opacity: 1;
 }
 
 
@@ -532,4 +540,67 @@
     min-height: 90px;
   }
 
+}
+
+/* =========================
+   DARK MODE - UPLOAD RESUME
+========================= */
+
+html.dark-mode .upload-page {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.16),
+      transparent 35%
+    ),
+    #0f172a;
+
+  color: #f8fafc;
+}
+
+html.dark-mode .upload-page h1,
+html.dark-mode .upload-page h2,
+html.dark-mode .upload-page h3 {
+  color: #f8fafc;
+}
+
+html.dark-mode .upload-page p {
+  color: #94a3b8;
+}
+
+html.dark-mode .upload-card {
+  background: rgba(30, 41, 59, 0.92);
+  border-color: #334155;
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.3);
+}
+
+html.dark-mode .upload-area {
+  background: #1e293b;
+  border-color: #475569;
+}
+
+html.dark-mode .upload-area:hover {
+  background: #172554;
+  border-color: #6366f1;
+}
+
+html.dark-mode .upload-icon {
+  background: #312e81;
+  color: #a5b4fc;
+}
+
+html.dark-mode .upload-area span,
+html.dark-mode .upload-area label {
+  color: #f8fafc;
+}
+
+html.dark-mode input[type="file"] {
+  color: #cbd5e1;
+}
+
+html.dark-mode .upload-btn {
+  box-shadow:
+    0 10px 25px rgba(99, 102, 241, 0.25);
 }

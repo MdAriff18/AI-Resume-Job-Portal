@@ -81,6 +81,12 @@
   font-size: 32px;
 
   letter-spacing: -1px;
+
+  color: #0f172a;
+
+  font-weight: 700;
+
+  opacity: 1;
 }
 
 .resumes-header > div > p {
@@ -707,4 +713,281 @@
     grid-template-columns: 1fr;
   }
 
+}
+
+/* =========================================
+   DARK MODE - MY RESUMES
+========================================= */
+
+html.dark-mode .resumes-page {
+  background:
+    radial-gradient(
+      circle at 85% 5%,
+      rgba(99, 102, 241, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(14, 165, 233, 0.10),
+      transparent 30%
+    ),
+    #0f172a !important;
+
+  color: #f8fafc;
+}
+
+/* Header */
+
+html.dark-mode .resumes-page .resumes-header h1,
+html.dark-mode .resumes-page .resumes-header h2,
+html.dark-mode .resumes-page .resumes-header h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .resumes-page .resumes-header p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .resumes-page .page-label {
+  color: #a5b4fc;
+}
+
+
+/* Resume Count */
+
+html.dark-mode .resumes-page .resume-count {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+html.dark-mode .resumes-page .resume-count span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .resumes-page .resume-count strong {
+  color: #a5b4fc !important;
+}
+
+
+/* Resume Cards */
+
+html.dark-mode .resumes-page .resume-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+
+  color: #f8fafc;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+html.dark-mode .resumes-page .resume-card:hover {
+  background: #243247 !important;
+  border-color: #6366f1 !important;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Resume Card Text */
+
+html.dark-mode .resumes-page .resume-card h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .resumes-page .uploaded-date {
+  color: #94a3b8 !important;
+}
+
+
+/* Resume Icon */
+
+html.dark-mode .resumes-page .resume-file-icon {
+  background: #312e81 !important;
+  color: #a5b4fc !important;
+}
+
+
+/* Status */
+
+html.dark-mode .resumes-page .resume-status {
+  background: #064e3b !important;
+  color: #6ee7b7 !important;
+}
+
+
+/* Buttons */
+
+html.dark-mode .resumes-page .view-resume-btn {
+  background: #334155 !important;
+  border-color: #475569 !important;
+  color: #e2e8f0 !important;
+}
+
+html.dark-mode .resumes-page .view-resume-btn:hover {
+  background: #475569 !important;
+}
+
+html.dark-mode .resumes-page .analyze-btn {
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #7c3aed
+    ) !important;
+
+  color: white !important;
+}
+
+
+/* Empty State */
+
+html.dark-mode .resumes-page .empty-resumes {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+}
+
+html.dark-mode .resumes-page .empty-resumes h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .resumes-page .empty-resumes p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .resumes-page .empty-icon {
+  background: #312e81 !important;
+  color: #a5b4fc !important;
+}
+
+
+/* Analysis Section */
+
+html.dark-mode .resumes-page .analysis-section {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+html.dark-mode .resumes-page .analysis-header h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .resumes-page .analysis-header span {
+  color: #a5b4fc !important;
+}
+
+html.dark-mode .resumes-page .analysis-icon {
+  background: #312e81 !important;
+  color: #a5b4fc !important;
+}
+
+
+/* Analysis Summary */
+
+html.dark-mode .resumes-page .analysis-info {
+  background: #243247 !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .resumes-page .analysis-info span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .resumes-page .analysis-info strong {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .resumes-page .ats-score-box {
+  background: #312e81 !important;
+  border-color: #4f46e5 !important;
+}
+
+html.dark-mode .resumes-page .ats-score-box span {
+  color: #c7d2fe !important;
+}
+
+html.dark-mode .resumes-page .ats-score-box strong {
+  color: #c4b5fd !important;
+}
+
+html.dark-mode .resumes-page .ats-score-box small {
+  color: #a5b4fc !important;
+}
+
+
+/* Analysis Columns */
+
+html.dark-mode .resumes-page .analysis-card {
+  border-color: #334155 !important;
+}
+
+html.dark-mode .resumes-page .found-card {
+  background: #052e1b !important;
+}
+
+html.dark-mode .resumes-page .missing-analysis-card {
+  background: #431407 !important;
+}
+
+html.dark-mode .resumes-page .analysis-card-title h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .resumes-page .found-card .analysis-card-title {
+  color: #6ee7b7 !important;
+}
+
+html.dark-mode .resumes-page .missing-analysis-card .analysis-card-title {
+  color: #fdba74 !important;
+}
+
+
+/* Analysis Badges */
+
+html.dark-mode .resumes-page .analysis-badges span {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #e2e8f0 !important;
+}
+
+
+/* Suggestions */
+
+html.dark-mode .resumes-page .suggestions-card {
+  background: #422006 !important;
+  border-color: #92400e !important;
+}
+
+html.dark-mode .resumes-page .suggestions-card .analysis-card-title {
+  color: #fbbf24 !important;
+}
+
+html.dark-mode .resumes-page .suggestion-item {
+  background: rgba(30, 41, 59, 0.75) !important;
+  border-color: #475569 !important;
+}
+
+html.dark-mode .resumes-page .suggestion-item span {
+  background: #78350f !important;
+  color: #fcd34d !important;
+}
+
+html.dark-mode .resumes-page .suggestion-item p {
+  color: #fde68a !important;
+}
+
+
+/* Error */
+
+html.dark-mode .resumes-page .resume-message {
+  background: #450a0a !important;
+  border-color: #7f1d1d !important;
+  color: #fda4af !important;
 }
