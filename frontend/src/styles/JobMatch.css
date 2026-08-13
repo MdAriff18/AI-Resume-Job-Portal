@@ -993,3 +993,220 @@ html.dark-mode .suggestion-item {
 html.dark-mode .suggestion-item p {
   color: #fcd34d;
 }
+
+/* =========================================
+   FIX - MATCH RESULTS TEXT VISIBILITY
+========================================= */
+
+/* Results heading */
+html.dark-mode .jobmatch-page .results-heading span {
+  color: #a5b4fc !important;
+}
+
+html.dark-mode .jobmatch-page .results-heading h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .jobmatch-page .results-heading svg {
+  color: #a78bfa !important;
+}
+
+
+/* Score information */
+html.dark-mode .jobmatch-page .score-info h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .jobmatch-page .score-info p {
+  color: #cbd5e1 !important;
+}
+
+
+/* Result card headings */
+html.dark-mode .jobmatch-page .result-card-header h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .jobmatch-page .result-card-header span {
+  color: #94a3b8 !important;
+}
+
+
+/* Empty result text */
+html.dark-mode .jobmatch-page .empty-result {
+  color: #94a3b8 !important;
+}
+
+
+/* Matched skills */
+html.dark-mode .jobmatch-page .matched-skill {
+  background: #064e3b !important;
+  color: #86efac !important;
+  border-color: #166534 !important;
+}
+
+
+/* Missing skills */
+html.dark-mode .jobmatch-page .missing-skill {
+  background: #4c0519 !important;
+  color: #fda4af !important;
+  border-color: #881337 !important;
+}
+
+
+/* Suggestions card */
+html.dark-mode .jobmatch-page .suggestions-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .jobmatch-page .suggestions-card .result-card-header h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .jobmatch-page .suggestions-card .result-card-header span {
+  color: #94a3b8 !important;
+}
+
+
+/* Suggestion items */
+html.dark-mode .jobmatch-page .suggestion-item {
+  background: #422006 !important;
+  border-color: #92400e !important;
+}
+
+html.dark-mode .jobmatch-page .suggestion-item p {
+  color: #fde68a !important;
+}
+
+html.dark-mode .jobmatch-page .suggestion-number {
+  background: #f59e0b !important;
+  color: #ffffff !important;
+}
+
+
+/* Result icons */
+html.dark-mode .jobmatch-page .matched-icon {
+  background: #064e3b !important;
+  color: #6ee7b7 !important;
+}
+
+html.dark-mode .jobmatch-page .missing-icon {
+  background: #4c0519 !important;
+  color: #fda4af !important;
+}
+
+html.dark-mode .jobmatch-page .suggestion-icon {
+  background: #78350f !important;
+  color: #fcd34d !important;
+}
+
+/* =========================================
+   FINAL MATCH RESULTS TEXT FIX
+========================================= */
+
+.jobmatch-page .results-heading-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.jobmatch-page .results-label {
+  color: #6366f1 !important;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.jobmatch-page .results-title {
+  color: #0f172a !important;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 4px 0 0;
+}
+
+.jobmatch-page .results-heading-icon {
+  color: #7c3aed !important;
+}
+
+.jobmatch-page .score-info h3 {
+  color: #0f172a !important;
+  font-weight: 800;
+}
+
+.jobmatch-page .score-info p {
+  color: #475569 !important;
+}
+
+.jobmatch-page .result-header-text h3 {
+  color: #0f172a !important;
+  font-weight: 800;
+}
+
+.jobmatch-page .result-header-text span {
+  color: #64748b !important;
+}
+
+.jobmatch-page .empty-result {
+  color: #64748b !important;
+}
+
+.jobmatch-page .suggestions-card .result-header-text h3 {
+  color: #0f172a !important;
+}
+
+.jobmatch-page .suggestions-card .result-header-text span {
+  color: #64748b !important;
+}
+
+.jobmatch-page .suggestion-item p {
+  color: #78350f !important;
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+html.dark-mode .jobmatch-page .results-label {
+  color: #a5b4fc !important;
+}
+
+html.dark-mode .jobmatch-page .results-title {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .jobmatch-page .results-heading-icon {
+  color: #c4b5fd !important;
+}
+
+html.dark-mode .jobmatch-page .score-info h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .jobmatch-page .score-info p {
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .jobmatch-page .result-header-text h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .jobmatch-page .result-header-text span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .jobmatch-page .empty-result {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .jobmatch-page .suggestions-card .result-header-text h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .jobmatch-page .suggestions-card .result-header-text span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .jobmatch-page .suggestion-item p {
+  color: #fde68a !important;
+}

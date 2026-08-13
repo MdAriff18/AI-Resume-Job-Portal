@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
-import { FileText, ExternalLink, Sparkles, Brain, CheckCircle2, AlertCircle, Lightbulb } from "lucide-react";
+import {
+  FileText,
+  ExternalLink,
+  Sparkles,
+  Brain,
+  CheckCircle2,
+  AlertCircle,
+  Lightbulb,
+} from "lucide-react";
+
 import API from "../api/axios";
 import "../styles/MyResumes.css";
 
@@ -9,15 +18,24 @@ function MyResumes() {
   const [message, setMessage] = useState("");
   const [analysis, setAnalysis] = useState(null);
 
+  // Loading state for individual resume analysis
+  const [analyzingId, setAnalyzingId] = useState(null);
+
 
   useEffect(() => {
     fetchResumes();
   }, []);
 
 
+  // =========================
+  // Fetch Resumes
+  // =========================
+
   const fetchResumes = async () => {
 
     try {
+
+      setMessage("");
 
       const token = localStorage.getItem("access");
 
@@ -30,20 +48,36 @@ function MyResumes() {
         }
       );
 
-      setResumes(response.data);
+      setResumes(response.data || []);
 
     } catch (error) {
 
       console.log(error);
+
       setMessage("Failed to load resumes");
 
     }
   };
 
 
+  // =========================
+  // Analyze Resume
+  // =========================
+
   const analyzeResume = async (id) => {
 
+    // Prevent multiple clicks
+    if (analyzingId !== null) {
+      return;
+    }
+
     try {
+
+      setMessage("");
+
+      setAnalysis(null);
+
+      setAnalyzingId(id);
 
       const token = localStorage.getItem("access");
 
@@ -64,7 +98,12 @@ function MyResumes() {
     } catch (error) {
 
       console.log(error);
-      setMessage("Analysis failed");
+
+      setMessage("Analysis failed. Please try again.");
+
+    } finally {
+
+      setAnalyzingId(null);
 
     }
   };
@@ -74,7 +113,9 @@ function MyResumes() {
 
     <div className="resumes-page">
 
-      {/* Page Header */}
+      {/* =========================
+          Page Header
+      ========================= */}
 
       <div className="resumes-header">
 
@@ -87,6 +128,7 @@ function MyResumes() {
             </div>
 
             <div>
+
               <span className="page-label">
                 RESUME MANAGEMENT
               </span>
@@ -94,6 +136,7 @@ function MyResumes() {
               <h1>
                 My Resumes
               </h1>
+
             </div>
 
           </div>
@@ -105,9 +148,13 @@ function MyResumes() {
         </div>
 
 
+        {/* Resume Count */}
+
         <div className="resume-count">
 
-          <span>Total Resumes</span>
+          <span>
+            Total Resumes
+          </span>
 
           <strong>
             {resumes.length}
@@ -118,7 +165,9 @@ function MyResumes() {
       </div>
 
 
-      {/* Resume List */}
+      {/* =========================
+          Resume List
+      ========================= */}
 
       <div className="resume-section">
 
@@ -144,63 +193,113 @@ function MyResumes() {
 
           <div className="resume-grid">
 
-            {resumes.map((resume) => (
+            {resumes.map((resume) => {
 
-              <div
-                className="resume-card"
-                key={resume.id}
-              >
+              const isAnalyzing = analyzingId === resume.id;
 
-                <div className="resume-card-top">
+              return (
 
-                  <div className="resume-file-icon">
-                    <FileText size={22} />
+                <div
+                  className="resume-card"
+                  key={resume.id}
+                >
+
+                  {/* Card Top */}
+
+                  <div className="resume-card-top">
+
+                    <div className="resume-file-icon">
+                      <FileText size={22} />
+                    </div>
+
+                    <span className="resume-status">
+                      Uploaded
+                    </span>
+
                   </div>
 
-                  <span className="resume-status">
-                    Uploaded
-                  </span>
+
+                  {/* Resume Title */}
+
+                  <h3>
+                    {resume.title}
+                  </h3>
+
+
+                  {/* Upload Date */}
+
+                  <p className="uploaded-date">
+
+                    Uploaded:{" "}
+
+                    {new Date(
+                      resume.uploaded_at
+                    ).toLocaleDateString()}
+
+                  </p>
+
+
+                  {/* Actions */}
+
+                  <div className="resume-actions">
+
+                    {/* View Resume */}
+
+                    <a
+                      className="view-resume-btn"
+                      href={`https://ai-resume-job-portal-backend.onrender.com${resume.resume}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+
+                      <ExternalLink size={16} />
+
+                      View Resume
+
+                    </a>
+
+
+                    {/* Analyze */}
+
+                    <button
+                      className="analyze-btn"
+                      onClick={() =>
+                        analyzeResume(resume.id)
+                      }
+                      disabled={analyzingId !== null}
+                    >
+
+                      {isAnalyzing ? (
+
+                        <>
+
+                          <span className="analyze-spinner"></span>
+
+                          Analyzing...
+
+                        </>
+
+                      ) : (
+
+                        <>
+
+                          <Sparkles size={16} />
+
+                          Analyze
+
+                        </>
+
+                      )}
+
+                    </button>
+
+                  </div>
 
                 </div>
 
+              );
 
-                <h3>
-                  {resume.title}
-                </h3>
-
-
-                <p className="uploaded-date">
-                  Uploaded:{" "}
-                  {new Date(resume.uploaded_at).toLocaleDateString()}
-                </p>
-
-
-                <div className="resume-actions">
-
-                  <a
-                    className="view-resume-btn"
-                    href={`http://127.0.0.1:8000${resume.resume}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <ExternalLink size={16} />
-                    View Resume
-                  </a>
-
-
-                  <button
-                    className="analyze-btn"
-                    onClick={() => analyzeResume(resume.id)}
-                  >
-                    <Sparkles size={16} />
-                    Analyze
-                  </button>
-
-                </div>
-
-              </div>
-
-            ))}
+            })}
 
           </div>
 
@@ -209,11 +308,15 @@ function MyResumes() {
       </div>
 
 
-      {/* AI Analysis */}
+      {/* =========================
+          AI Analysis
+      ========================= */}
 
       {analysis && (
 
         <div className="analysis-section">
+
+          {/* Analysis Header */}
 
           <div className="analysis-header">
 
@@ -236,11 +339,15 @@ function MyResumes() {
           </div>
 
 
+          {/* Analysis Summary */}
+
           <div className="analysis-summary">
 
             <div className="analysis-info">
 
-              <span>Resume</span>
+              <span>
+                Resume
+              </span>
 
               <strong>
                 {analysis.title}
@@ -251,7 +358,9 @@ function MyResumes() {
 
             <div className="analysis-info">
 
-              <span>Word Count</span>
+              <span>
+                Word Count
+              </span>
 
               <strong>
                 {analysis.word_count}
@@ -267,14 +376,23 @@ function MyResumes() {
               </span>
 
               <strong>
+
                 {analysis.ats_score}
-                <small>/100</small>
+
+                <small>
+                  /100
+                </small>
+
               </strong>
 
             </div>
 
           </div>
 
+
+          {/* =========================
+              Skills Columns
+          ========================= */}
 
           <div className="analysis-columns">
 
@@ -295,14 +413,25 @@ function MyResumes() {
 
               <div className="analysis-badges">
 
-                {analysis.skills_found.map(
-                  (skill, index) => (
+                {analysis.skills_found &&
+                analysis.skills_found.length > 0 ? (
 
-                    <span key={index}>
-                      {skill}
-                    </span>
+                  analysis.skills_found.map(
+                    (skill, index) => (
 
+                      <span key={index}>
+                        {skill}
+                      </span>
+
+                    )
                   )
+
+                ) : (
+
+                  <span>
+                    No skills found
+                  </span>
+
                 )}
 
               </div>
@@ -327,14 +456,25 @@ function MyResumes() {
 
               <div className="analysis-badges">
 
-                {analysis.missing_skills.map(
-                  (skill, index) => (
+                {analysis.missing_skills &&
+                analysis.missing_skills.length > 0 ? (
 
-                    <span key={index}>
-                      {skill}
-                    </span>
+                  analysis.missing_skills.map(
+                    (skill, index) => (
 
+                      <span key={index}>
+                        {skill}
+                      </span>
+
+                    )
                   )
+
+                ) : (
+
+                  <span>
+                    No missing skills
+                  </span>
+
                 )}
 
               </div>
@@ -344,7 +484,9 @@ function MyResumes() {
           </div>
 
 
-          {/* Suggestions */}
+          {/* =========================
+              AI Suggestions
+          ========================= */}
 
           <div className="suggestions-card">
 
@@ -361,25 +503,44 @@ function MyResumes() {
 
             <div className="suggestions-list">
 
-              {analysis.suggestions.map(
-                (item, index) => (
+              {analysis.suggestions &&
+              analysis.suggestions.length > 0 ? (
 
-                  <div
-                    className="suggestion-item"
-                    key={index}
-                  >
+                analysis.suggestions.map(
+                  (item, index) => (
 
-                    <span>
-                      {index + 1}
-                    </span>
+                    <div
+                      className="suggestion-item"
+                      key={index}
+                    >
 
-                    <p>
-                      {item}
-                    </p>
+                      <span>
+                        {index + 1}
+                      </span>
 
-                  </div>
+                      <p>
+                        {item}
+                      </p>
 
+                    </div>
+
+                  )
                 )
+
+              ) : (
+
+                <div className="suggestion-item">
+
+                  <span>
+                    ✓
+                  </span>
+
+                  <p>
+                    Your resume looks good. No additional suggestions at this time.
+                  </p>
+
+                </div>
+
               )}
 
             </div>
@@ -390,6 +551,10 @@ function MyResumes() {
 
       )}
 
+
+      {/* =========================
+          Message
+      ========================= */}
 
       {message && (
 

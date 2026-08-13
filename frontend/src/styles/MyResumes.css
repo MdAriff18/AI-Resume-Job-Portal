@@ -1,4 +1,55 @@
 /* =========================
+   Global Font Fix
+========================= */
+
+.resumes-page,
+.resumes-page * {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Make important text clearly visible */
+
+.resumes-page .resumes-header h1 {
+  color: #0f172a !important;
+  opacity: 1 !important;
+  font-weight: 800 !important;
+}
+
+.resumes-page .resumes-header p {
+  color: #475569 !important;
+  opacity: 1 !important;
+}
+
+.resumes-page .page-label {
+  color: #4f46e5 !important;
+  opacity: 1 !important;
+}
+
+.resumes-page .empty-resumes h2 {
+  color: #1e293b !important;
+  opacity: 1 !important;
+}
+
+.resumes-page .empty-resumes p {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+.resumes-page .resume-card h3 {
+  color: #1e293b !important;
+  opacity: 1 !important;
+}
+
+.resumes-page .uploaded-date {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+
+/* =========================
    My Resumes Page
 ========================= */
 
@@ -990,4 +1041,84 @@ html.dark-mode .resumes-page .resume-message {
   background: #450a0a !important;
   border-color: #7f1d1d !important;
   color: #fda4af !important;
+}
+
+/* =========================
+   Analyze Button Spinner
+========================= */
+
+.analyze-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.analyze-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: analyze-spin 0.7s linear infinite;
+}
+
+@keyframes analyze-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   FIX - Resume Count
+========================= */
+
+.resumes-page .resume-count {
+  min-width: 140px;
+  padding: 16px 20px;
+
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.05);
+
+  text-align: center;
+}
+
+.resumes-page .resume-count span {
+  display: block;
+
+  color: #64748b !important;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.resumes-page .resume-count strong {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #4f46e5 !important;
+
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+
+/* Dark Mode */
+
+html.dark-mode .resumes-page .resume-count {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .resumes-page .resume-count span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .resumes-page .resume-count strong {
+  color: #a5b4fc !important;
 }

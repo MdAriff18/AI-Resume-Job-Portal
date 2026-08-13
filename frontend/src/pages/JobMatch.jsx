@@ -70,10 +70,11 @@ function JobMatch() {
 
   return (
     <div className="jobmatch-page">
-
       <div className="jobmatch-container">
 
-        {/* Page Header */}
+        {/* =========================
+            PAGE HEADER
+        ========================= */}
 
         <div className="jobmatch-header">
 
@@ -86,9 +87,7 @@ function JobMatch() {
               AI CAREER INTELLIGENCE
             </span>
 
-            <h1>
-              Resume Job Match
-            </h1>
+            <h1>Resume Job Match</h1>
 
             <p>
               Compare your resume with a job description
@@ -99,7 +98,9 @@ function JobMatch() {
         </div>
 
 
-        {/* Main Matching Card */}
+        {/* =========================
+            MAIN MATCHING CARD
+        ========================= */}
 
         <div className="match-card">
 
@@ -114,9 +115,7 @@ function JobMatch() {
               </div>
 
               <div>
-                <h3>
-                  Select Resume
-                </h3>
+                <h3>Select Resume</h3>
 
                 <p>
                   Choose the resume you want to analyze.
@@ -124,7 +123,6 @@ function JobMatch() {
               </div>
 
             </div>
-
 
             <select
               value={resumeId}
@@ -163,9 +161,7 @@ function JobMatch() {
               </div>
 
               <div>
-                <h3>
-                  Job Description
-                </h3>
+                <h3>Job Description</h3>
 
                 <p>
                   Paste the job description you want to match.
@@ -173,7 +169,6 @@ function JobMatch() {
               </div>
 
             </div>
-
 
             <textarea
               className="job-description"
@@ -199,48 +194,56 @@ function JobMatch() {
             onClick={handleMatch}
             disabled={!resumeId || !jobDescription.trim()}
           >
-
             <Sparkles size={18} />
 
             Analyze Job Match
 
             <ArrowRight size={18} />
-
           </button>
 
         </div>
 
 
-        {/* Results */}
+        {/* =========================
+            RESULTS
+        ========================= */}
 
         {result && (
-
           <div className="results-section">
+
+            {/* Results Header */}
 
             <div className="results-heading">
 
-              <div>
-                <span>
+              <div className="results-heading-content">
+
+                <span className="results-label">
                   AI ANALYSIS
                 </span>
 
-                <h2>
+                <h2 className="results-title">
                   Match Results
                 </h2>
+
               </div>
 
-              <Sparkles size={24} />
+              <Sparkles
+                size={24}
+                className="results-heading-icon"
+              />
 
             </div>
 
 
-            {/* Score */}
+            {/* =========================
+                SCORE
+            ========================= */}
 
             <div className="score-card">
 
               <div className="score-circle">
 
-                <div>
+                <div className="score-circle-inner">
 
                   <strong>
                     {result.match_score}%
@@ -271,7 +274,9 @@ function JobMatch() {
             </div>
 
 
-            {/* Skills Grid */}
+            {/* =========================
+                SKILLS GRID
+            ========================= */}
 
             <div className="result-grid">
 
@@ -285,7 +290,8 @@ function JobMatch() {
                     <CheckCircle2 size={19} />
                   </div>
 
-                  <div>
+                  <div className="result-header-text">
+
                     <h3>
                       Matched Skills
                     </h3>
@@ -293,6 +299,7 @@ function JobMatch() {
                     <span>
                       Skills you already have
                     </span>
+
                   </div>
 
                 </div>
@@ -336,7 +343,8 @@ function JobMatch() {
                     <XCircle size={19} />
                   </div>
 
-                  <div>
+                  <div className="result-header-text">
+
                     <h3>
                       Missing Skills
                     </h3>
@@ -344,6 +352,7 @@ function JobMatch() {
                     <span>
                       Skills you should improve
                     </span>
+
                   </div>
 
                 </div>
@@ -379,7 +388,9 @@ function JobMatch() {
             </div>
 
 
-            {/* Suggestions */}
+            {/* =========================
+                AI SUGGESTIONS
+            ========================= */}
 
             <div className="suggestions-card">
 
@@ -389,7 +400,8 @@ function JobMatch() {
                   <Lightbulb size={19} />
                 </div>
 
-                <div>
+                <div className="result-header-text">
+
                   <h3>
                     AI Suggestions
                   </h3>
@@ -397,6 +409,7 @@ function JobMatch() {
                   <span>
                     Recommendations to improve your match
                   </span>
+
                 </div>
 
               </div>
@@ -404,25 +417,35 @@ function JobMatch() {
 
               <div className="suggestions-list">
 
-                {result.suggestions.map(
-                  (item, index) => (
+                {result.suggestions.length > 0 ? (
 
-                    <div
-                      className="suggestion-item"
-                      key={index}
-                    >
+                  result.suggestions.map(
+                    (item, index) => (
 
-                      <span className="suggestion-number">
-                        {index + 1}
-                      </span>
+                      <div
+                        className="suggestion-item"
+                        key={index}
+                      >
 
-                      <p>
-                        {item}
-                      </p>
+                        <span className="suggestion-number">
+                          {index + 1}
+                        </span>
 
-                    </div>
+                        <p>
+                          {item}
+                        </p>
 
+                      </div>
+
+                    )
                   )
+
+                ) : (
+
+                  <p className="empty-result">
+                    No suggestions available.
+                  </p>
+
                 )}
 
               </div>
@@ -430,11 +453,9 @@ function JobMatch() {
             </div>
 
           </div>
-
         )}
 
       </div>
-
     </div>
   );
 }

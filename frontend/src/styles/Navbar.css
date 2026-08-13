@@ -13,12 +13,18 @@
   min-height: 72px;
   padding: 0 30px;
 
-  background: rgba(255, 255, 255, 0.88);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  background: rgba(255, 255, 255, 0.96);
 
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  border-bottom: 1px solid #e2e8f0;
 
   box-shadow:
     0 8px 30px rgba(15, 23, 42, 0.06);
@@ -57,7 +63,7 @@
       #8b5cf6
     );
 
-  color: white;
+  color: #ffffff;
 
   box-shadow:
     0 8px 20px rgba(99, 102, 241, 0.28);
@@ -115,7 +121,9 @@
 
   letter-spacing: 2px;
 
-  color: #94a3b8;
+  color: #64748b;
+
+  opacity: 1;
 }
 
 
@@ -145,7 +153,9 @@
 
   border-radius: 11px;
 
-  color: #64748b;
+  color: #334155;
+
+  font-family: inherit;
 
   font-size: 12px;
   font-weight: 700;
@@ -153,6 +163,8 @@
   white-space: nowrap;
 
   cursor: pointer;
+
+  opacity: 1;
 
   transition:
     color 0.25s ease,
@@ -162,7 +174,9 @@
 }
 
 
-/* Hover */
+/* =========================
+   NAVIGATION HOVER
+========================= */
 
 .nav-link:hover {
   color: #4f46e5;
@@ -181,10 +195,12 @@
 }
 
 
-/* Active */
+/* =========================
+   ACTIVE NAVIGATION
+========================= */
 
 .nav-link.active {
-  color: #4f46e5;
+  color: #4338ca;
 
   background:
     linear-gradient(
@@ -196,9 +212,6 @@
   box-shadow:
     0 5px 15px rgba(99, 102, 241, 0.08);
 }
-
-
-/* Active indicator */
 
 .nav-link.active::after {
   content: "";
@@ -233,7 +246,9 @@
 }
 
 
-/* Theme */
+/* =========================
+   THEME WRAPPER
+========================= */
 
 .theme-wrapper {
   display: flex;
@@ -250,13 +265,15 @@
 }
 
 
-/* Divider */
+/* =========================
+   DIVIDER
+========================= */
 
 .navbar-divider {
   width: 1px;
   height: 28px;
 
-  background: #e2e8f0;
+  background: #cbd5e1;
 }
 
 
@@ -279,12 +296,16 @@
 
   background: #ffffff;
 
-  color: #475569;
+  color: #334155;
+
+  font-family: inherit;
 
   font-size: 13px;
   font-weight: 700;
 
   cursor: pointer;
+
+  opacity: 1;
 
   transition:
     transform 0.25s ease,
@@ -369,10 +390,8 @@
     font-size: 7px;
   }
 
-  /*
-    Navigation becomes
-    horizontal scroll menu
-  */
+
+  /* Mobile Navigation */
 
   .navbar-links {
     position: absolute;
@@ -389,7 +408,7 @@
 
     overflow-x: auto;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
 
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
@@ -410,6 +429,8 @@
     padding: 9px 12px;
 
     font-size: 11px;
+
+    color: #334155;
   }
 
   .navbar-actions {
@@ -456,4 +477,110 @@
   .navbar-links {
     padding: 9px 10px;
   }
+}
+
+
+/* =========================================
+   DARK MODE - NAVBAR
+========================================= */
+
+html.dark-mode .navbar {
+  background: rgba(15, 23, 42, 0.96) !important;
+
+  border-bottom-color: #334155 !important;
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Brand */
+
+html.dark-mode .brand-text span {
+  color: #94a3b8 !important;
+}
+
+
+/* Navigation */
+
+html.dark-mode .nav-link {
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .nav-link:hover {
+  color: #c4b5fd !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #312e81,
+      #3b256f
+    ) !important;
+}
+
+html.dark-mode .nav-link.active {
+  color: #c4b5fd !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #312e81,
+      #3b256f
+    ) !important;
+}
+
+html.dark-mode .nav-link.active::after {
+  background: #818cf8 !important;
+}
+
+
+/* Theme */
+
+html.dark-mode .theme-wrapper {
+  background: #1e293b !important;
+
+  border-color: #334155 !important;
+}
+
+
+/* Divider */
+
+html.dark-mode .navbar-divider {
+  background: #475569 !important;
+}
+
+
+/* Logout */
+
+html.dark-mode .logout-btn {
+  background: #1e293b !important;
+
+  border-color: #334155 !important;
+
+  color: #e2e8f0 !important;
+}
+
+html.dark-mode .logout-btn:hover {
+  background: #450a0a !important;
+
+  border-color: #7f1d1d !important;
+
+  color: #fda4af !important;
+}
+
+
+/* Mobile Dark Mode */
+
+@media (max-width: 768px) {
+
+  html.dark-mode .navbar-links {
+    background: rgba(15, 23, 42, 0.98) !important;
+
+    border-bottom-color: #334155 !important;
+  }
+
+  html.dark-mode .nav-link {
+    color: #cbd5e1 !important;
+  }
+
 }
