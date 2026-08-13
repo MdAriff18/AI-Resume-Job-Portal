@@ -1,6 +1,9 @@
 import os
 import re
+from io import BytesIO
+from urllib.parse import urlparse
 
+import requests
 import PyPDF2
 from docx import Document
 
@@ -23,27 +26,46 @@ COMMON_SKILLS = [
 ]
 
 
-def extract_resume_text(file_path):
+def extract_resume_text(file_source):
     text = ""
 
-    extension = os.path.splitext(file_path)[1].lower()
+    # Cloudinary URL
+    if isinstance(file_source, str) and file_source.startswith(
+        ("http://", "https://")
+    ):
+
+        response = requests.get(
+            file_source,
+            timeout=30,
+        )
+
+        response.raise_for_status()
+
+        file_data = BytesIO(response.content)
+
+        path = urlparse(file_source).path
+        extension = os.path.splitext(path)[1].lower()
+
+    # Local file path
+    else:
+
+        extension = os.path.splitext(file_source)[1].lower()
+        file_data = file_source
 
     if extension == ".pdf":
 
-        with open(file_path, "rb") as file:
+        reader = PyPDF2.PdfReader(file_data)
 
-            reader = PyPDF2.PdfReader(file)
+        for page in reader.pages:
 
-            for page in reader.pages:
+            page_text = page.extract_text()
 
-                page_text = page.extract_text()
-
-                if page_text:
-                    text += page_text + "\n"
+            if page_text:
+                text += page_text + "\n"
 
     elif extension == ".docx":
 
-        document = Document(file_path)
+        document = Document(file_data)
 
         for paragraph in document.paragraphs:
             text += paragraph.text + "\n"

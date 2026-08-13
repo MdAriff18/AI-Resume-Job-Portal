@@ -138,7 +138,9 @@ class ResumeListAPIView(APIView):
 
     def get(self, request):
 
-        resumes = Resume.objects.filter(user=request.user)
+        resumes = Resume.objects.filter(
+            user=request.user
+        )
 
         serializer = ResumeSerializer(
             resumes,
@@ -173,7 +175,31 @@ class AnalyzeResumeAPIView(APIView):
                 status=status.HTTP_404_NOT_FOUND,
             )
 
-        text = extract_resume_text(resume.resume.path)
+        try:
+
+            # Cloudinary URL
+            resume_url = resume.resume.url
+
+            text = extract_resume_text(resume_url)
+
+        except Exception as e:
+
+            return Response(
+                {
+                    "error": "Unable to read resume file",
+                    "details": str(e),
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        if not text:
+
+            return Response(
+                {
+                    "error": "Could not extract text from resume."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         analysis = analyze_resume(text)
 
@@ -189,6 +215,7 @@ class AnalyzeResumeAPIView(APIView):
             status=status.HTTP_200_OK,
         )
 
+
 class ResumeJobMatchAPIView(APIView):
 
     permission_classes = [IsAuthenticated]
@@ -196,28 +223,63 @@ class ResumeJobMatchAPIView(APIView):
     def post(self, request):
 
         resume_id = request.data.get("resume_id")
-        job_description = request.data.get("job_description", "")
+        job_description = request.data.get(
+            "job_description",
+            ""
+        )
 
         try:
+
             resume = Resume.objects.get(
                 id=resume_id,
                 user=request.user,
             )
 
         except Resume.DoesNotExist:
+
             return Response(
                 {"error": "Resume not found"},
                 status=status.HTTP_404_NOT_FOUND,
             )
 
-        resume_text = extract_resume_text(resume.resume.path)
+        try:
+
+            # Cloudinary URL
+            resume_url = resume.resume.url
+
+            resume_text = extract_resume_text(
+                resume_url
+            )
+
+        except Exception as e:
+
+            return Response(
+                {
+                    "error": "Unable to read resume file",
+                    "details": str(e),
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        if not resume_text:
+
+            return Response(
+                {
+                    "error": "Could not extract text from resume."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         result = match_resume_with_job(
             resume_text,
             job_description,
         )
 
-        return Response(result, status=status.HTTP_200_OK)
+        return Response(
+            result,
+            status=status.HTTP_200_OK,
+        )
+
 
 class ResumeBuilderAPIView(APIView):
 
@@ -225,7 +287,9 @@ class ResumeBuilderAPIView(APIView):
 
     def post(self, request):
 
-        serializer = ResumeBuilderSerializer(data=request.data)
+        serializer = ResumeBuilderSerializer(
+            data=request.data
+        )
 
         if serializer.is_valid():
 
@@ -257,6 +321,7 @@ class ResumeBuilderAPIView(APIView):
             status=status.HTTP_200_OK,
         )
 
+
 class ResumePDFAPIView(APIView):
 
     permission_classes = [IsAuthenticated]
@@ -264,12 +329,14 @@ class ResumePDFAPIView(APIView):
     def get(self, request, resume_id):
 
         try:
+
             resume = ResumeBuilder.objects.get(
                 id=resume_id,
                 user=request.user,
             )
 
         except ResumeBuilder.DoesNotExist:
+
             return Response(
                 {"error": "Resume not found"},
                 status=status.HTTP_404_NOT_FOUND,
@@ -284,6 +351,9 @@ class ResumePDFAPIView(APIView):
 
         response[
             "Content-Disposition"
-        ] = f'attachment; filename="{resume.full_name}_Resume.pdf"'
+        ] = (
+            f'attachment; '
+            f'filename="{resume.full_name}_Resume.pdf"'
+        )
 
         return response
