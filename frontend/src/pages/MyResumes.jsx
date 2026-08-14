@@ -13,70 +13,50 @@ import API from "../api/axios";
 import "../styles/MyResumes.css";
 
 function MyResumes() {
-
   const [resumes, setResumes] = useState([]);
   const [message, setMessage] = useState("");
   const [analysis, setAnalysis] = useState(null);
-
-  // Loading state for individual resume analysis
   const [analyzingId, setAnalyzingId] = useState(null);
-
 
   useEffect(() => {
     fetchResumes();
   }, []);
-
 
   // =========================
   // Fetch Resumes
   // =========================
 
   const fetchResumes = async () => {
-
     try {
-
       setMessage("");
 
       const token = localStorage.getItem("access");
 
-      const response = await API.get(
-        "resume/list/",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await API.get("resume/list/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setResumes(response.data || []);
-
     } catch (error) {
-
-      console.log(error);
-
-      setMessage("Failed to load resumes");
-
+      console.error("FETCH RESUMES ERROR:", error);
+      setMessage("Failed to load resumes.");
     }
   };
-
 
   // =========================
   // Analyze Resume
   // =========================
 
   const analyzeResume = async (id) => {
-
-    // Prevent multiple clicks
     if (analyzingId !== null) {
       return;
     }
 
     try {
-
       setMessage("");
-
       setAnalysis(null);
-
       setAnalyzingId(id);
 
       const token = localStorage.getItem("access");
@@ -94,23 +74,24 @@ function MyResumes() {
       );
 
       setAnalysis(response.data);
-
     } catch (error) {
+      console.error("ANALYSIS ERROR:", error);
+      console.error("SERVER RESPONSE:", error.response?.data);
 
-      console.log(error);
+      const serverError =
+        error.response?.data?.details ||
+        error.response?.data?.error;
 
-      setMessage("Analysis failed. Please try again.");
-
+      setMessage(
+        serverError ||
+          "Analysis failed. Please try again."
+      );
     } finally {
-
       setAnalyzingId(null);
-
     }
   };
 
-
   return (
-
     <div className="resumes-page">
 
       {/* =========================
@@ -120,7 +101,6 @@ function MyResumes() {
       <div className="resumes-header">
 
         <div>
-
           <div className="page-title-row">
 
             <div className="page-icon">
@@ -128,15 +108,11 @@ function MyResumes() {
             </div>
 
             <div>
-
               <span className="page-label">
                 RESUME MANAGEMENT
               </span>
 
-              <h1>
-                My Resumes
-              </h1>
-
+              <h1>My Resumes</h1>
             </div>
 
           </div>
@@ -144,22 +120,14 @@ function MyResumes() {
           <p>
             Manage your resumes and analyze them with AI.
           </p>
-
         </div>
 
-
-        {/* Resume Count */}
-
         <div className="resume-count">
-
-          <span>
-            Total Resumes
-          </span>
+          <span>Total Resumes</span>
 
           <strong>
             {resumes.length}
           </strong>
-
         </div>
 
       </div>
@@ -179,12 +147,11 @@ function MyResumes() {
               <FileText size={30} />
             </div>
 
-            <h2>
-              No resumes yet
-            </h2>
+            <h2>No resumes yet</h2>
 
             <p>
-              Upload your first resume to start analyzing it with AI.
+              Upload your first resume to start
+              analyzing it with AI.
             </p>
 
           </div>
@@ -195,10 +162,10 @@ function MyResumes() {
 
             {resumes.map((resume) => {
 
-              const isAnalyzing = analyzingId === resume.id;
+              const isAnalyzing =
+                analyzingId === resume.id;
 
               return (
-
                 <div
                   className="resume-card"
                   key={resume.id}
@@ -229,13 +196,12 @@ function MyResumes() {
                   {/* Upload Date */}
 
                   <p className="uploaded-date">
-
                     Uploaded:{" "}
-
-                    {new Date(
-                      resume.uploaded_at
-                    ).toLocaleDateString()}
-
+                    {resume.uploaded_at
+                      ? new Date(
+                          resume.uploaded_at
+                        ).toLocaleDateString()
+                      : "Unknown"}
                   </p>
 
 
@@ -247,15 +213,12 @@ function MyResumes() {
 
                     <a
                       className="view-resume-btn"
-                      href={`https://ai-resume-job-portal-backend.onrender.com${resume.resume}`}
+                      href={resume.resume}
                       target="_blank"
                       rel="noreferrer"
                     >
-
                       <ExternalLink size={16} />
-
                       View Resume
-
                     </a>
 
 
@@ -270,25 +233,15 @@ function MyResumes() {
                     >
 
                       {isAnalyzing ? (
-
                         <>
-
                           <span className="analyze-spinner"></span>
-
                           Analyzing...
-
                         </>
-
                       ) : (
-
                         <>
-
                           <Sparkles size={16} />
-
                           Analyze
-
                         </>
-
                       )}
 
                     </button>
@@ -296,13 +249,10 @@ function MyResumes() {
                   </div>
 
                 </div>
-
               );
-
             })}
 
           </div>
-
         )}
 
       </div>
@@ -325,15 +275,11 @@ function MyResumes() {
             </div>
 
             <div>
-
-              <span>
-                AI POWERED
-              </span>
+              <span>AI POWERED</span>
 
               <h2>
                 Resume Analysis
               </h2>
-
             </div>
 
           </div>
@@ -345,9 +291,7 @@ function MyResumes() {
 
             <div className="analysis-info">
 
-              <span>
-                Resume
-              </span>
+              <span>Resume</span>
 
               <strong>
                 {analysis.title}
@@ -358,9 +302,7 @@ function MyResumes() {
 
             <div className="analysis-info">
 
-              <span>
-                Word Count
-              </span>
+              <span>Word Count</span>
 
               <strong>
                 {analysis.word_count}
@@ -371,18 +313,11 @@ function MyResumes() {
 
             <div className="ats-score-box">
 
-              <span>
-                ATS Score
-              </span>
+              <span>ATS Score</span>
 
               <strong>
-
                 {analysis.ats_score}
-
-                <small>
-                  /100
-                </small>
-
+                <small>/100</small>
               </strong>
 
             </div>
@@ -413,16 +348,13 @@ function MyResumes() {
 
               <div className="analysis-badges">
 
-                {analysis.skills_found &&
-                analysis.skills_found.length > 0 ? (
+                {analysis.skills_found?.length > 0 ? (
 
                   analysis.skills_found.map(
                     (skill, index) => (
-
                       <span key={index}>
                         {skill}
                       </span>
-
                     )
                   )
 
@@ -456,16 +388,13 @@ function MyResumes() {
 
               <div className="analysis-badges">
 
-                {analysis.missing_skills &&
-                analysis.missing_skills.length > 0 ? (
+                {analysis.missing_skills?.length > 0 ? (
 
                   analysis.missing_skills.map(
                     (skill, index) => (
-
                       <span key={index}>
                         {skill}
                       </span>
-
                     )
                   )
 
@@ -503,8 +432,7 @@ function MyResumes() {
 
             <div className="suggestions-list">
 
-              {analysis.suggestions &&
-              analysis.suggestions.length > 0 ? (
+              {analysis.suggestions?.length > 0 ? (
 
                 analysis.suggestions.map(
                   (item, index) => (
@@ -531,12 +459,11 @@ function MyResumes() {
 
                 <div className="suggestion-item">
 
-                  <span>
-                    ✓
-                  </span>
+                  <span>✓</span>
 
                   <p>
-                    Your resume looks good. No additional suggestions at this time.
+                    Your resume looks good. No additional
+                    suggestions at this time.
                   </p>
 
                 </div>
@@ -548,7 +475,6 @@ function MyResumes() {
           </div>
 
         </div>
-
       )}
 
 
